@@ -7,11 +7,11 @@
       Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}
     </p>
     <todo
-      v-on:delete-todo="deleteTodo"
-      v-on:toggle-todo="toggleTodo"
+      @delete-todo="deleteTodo"
+      @toggle-todo="toggleTodo"
       v-for="(todo, i) in todos"
-      v-bind:key="i"
-      v-bind:todo="todo"></todo>
+      :key="i"
+      :todo="todo"></todo>
   </div>
 </template>
 
