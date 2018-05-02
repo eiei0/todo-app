@@ -33,12 +33,15 @@
         </div>
       </div>
     </div>
-    <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" disabled>
+    <div
+      class='ui bottom attached green basic button'
+      v-on:click="toggleTodo(todo)"
+      v-show="!isEditing &&todo.done" disabled>
       Completed
     </div>
     <div
       class='ui bottom attached red basic button'
-      v-on:click="completeTodo(todo)"
+      v-on:click="toggleTodo(todo)"
       v-show="!isEditing && !todo.done">
       Pending
     </div>
@@ -63,8 +66,8 @@ export default {
     deleteTodo(todo) {
       this.$emit('delete-todo', todo);
     },
-    completeTodo(todo) {
-      this.$emit('complete-todo', todo);
+    toggleTodo(todo) {
+      this.$emit('toggle-todo', todo);
     },
   },
 };

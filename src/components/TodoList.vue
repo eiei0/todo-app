@@ -8,7 +8,7 @@
     </p>
     <todo
       v-on:delete-todo="deleteTodo"
-      v-on:complete-todo="completeTodo"
+      v-on:toggle-todo="toggleTodo"
       v-for="(todo, i) in todos"
       v-bind:key="i"
       v-bind:todo="todo"></todo>
@@ -29,9 +29,13 @@ export default {
       const todoIndex = this.todos.indexOf(todo);
       this.todos.splice(todoIndex, 1);
     },
-    completeTodo(todo) {
+    toggleTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
-      this.todos[todoIndex].done = true;
+      if (this.todos[todoIndex].done === false) {
+        this.todos[todoIndex].done = true;
+      } else {
+        this.todos[todoIndex].done = false;
+      }
     },
   },
 };
